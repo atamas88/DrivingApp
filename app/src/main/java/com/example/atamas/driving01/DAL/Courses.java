@@ -16,18 +16,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by a.tamas on 23/05/2016.
+ * Created by a.tamas on 25/05/2016.
  */
-public class Users {
+public class Courses {
+    private final String URL = "http://finalproject-mistah.rhcloud.com/api/courses";
 
-    private final String URL = "http://finalproject-mistah.rhcloud.com/api/users";
+    private final String TAG = "COURSE";
 
-    private final String TAG = "USER";
+    ArrayList<BECourse> m_courses;
 
-    ArrayList<BEUser> m_users;
-
-    public Users(){
-        m_users = new ArrayList<BEUser>();
+    public Courses(){
+        m_courses = new ArrayList<BECourse>();
     }
 
     public void loadFake()
@@ -38,12 +37,12 @@ public class Users {
         m_courses.add(new BEUser("3", "c", "a", "a", "a"));
         */
 
-        m_users.add(new BEUser("5464asd", "feri" , "5742fd8966fd7180489f6f43"));
+        m_courses.add(new BECourse("00","korsz", 10));
     }
 
     public void loadAll()
     {
-        m_users.add(new BEUser("00","proba", "5742fd8966fd7180489f6f43"));
+        m_courses.add(new BECourse("00","korsz", 10));
         try {
             String result = getContent(URL);
 
@@ -55,10 +54,10 @@ public class Users {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject d = array.getJSONObject(i);
 
-                BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("course"));
+                BECourse s = new BECourse(d.getString("_id"), d.getString("description"),d.getInt("week"));
 
-             //   BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("firstName"), d.getString("lastName"), d.getString("email"));
-                m_users.add(s);
+                //   BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("firstName"), d.getString("lastName"), d.getString("email"));
+                m_courses.add(s);
             }
 
         } catch (JSONException e) {
@@ -69,8 +68,8 @@ public class Users {
         }
     }
 
-    public ArrayList<BEUser> getAll()
-    { return m_users; }
+    public ArrayList<BECourse> getAll()
+    { return m_courses; }
 
     private String getContent(String urlString)
     {
@@ -121,4 +120,5 @@ public class Users {
         return null;
 
     }
+
 }

@@ -1,23 +1,14 @@
 package com.example.atamas.driving01;
 
-import android.app.ListActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.atamas.driving01.DAL.BEUser;
 import com.example.atamas.driving01.DAL.Users;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Profile extends AppCompatActivity {
@@ -26,6 +17,7 @@ public class Profile extends AppCompatActivity {
     Users dbUsers = new Users();
     ArrayList<BEUser> users = new ArrayList<>();
     String user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

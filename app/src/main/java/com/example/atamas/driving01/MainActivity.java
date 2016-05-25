@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/****
 public class MainActivity extends ListActivity {
 
     String TAG = "USER";
@@ -56,6 +56,16 @@ public class MainActivity extends ListActivity {
     public SimpleAdapter createAdapter(ArrayList<BEUser> ms) {
         SimpleAdapter adapter = new SimpleAdapter(this,
                 asListMap(ms),
+                R.layout.prof,
+                new String[]{"name"},
+                new int[]{R.id.txtName});
+
+        return adapter;
+    }
+/*
+    public SimpleAdapter createAdapter(ArrayList<BEUser> ms) {
+        SimpleAdapter adapter = new SimpleAdapter(this,
+                asListMap(ms),
                 R.layout.cell,
                 new String[]{"name"},
                 new int[]{R.id.txtName});
@@ -63,7 +73,7 @@ public class MainActivity extends ListActivity {
         return adapter;
     }
 
-*/
+
     public void initializeData(final ArrayList<BEUser> pd) {
         ListAdapter adapter = createAdapter(pd);
 
@@ -86,3 +96,4 @@ public class MainActivity extends ListActivity {
     }
 
 }
+*/

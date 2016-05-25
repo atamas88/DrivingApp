@@ -43,6 +43,7 @@ public class Users {
 
     public void loadAll()
     {
+        m_users.add(new BEUser("00","proba"));
         try {
             String result = getContent(URL);
 

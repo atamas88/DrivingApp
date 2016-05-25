@@ -16,9 +16,9 @@ public class InitializeTask extends AsyncTask<
         ArrayList<BEUser>>
 
 {
-    MainActivity m_context;
+    Profile m_context;
 
-    public InitializeTask(MainActivity context)
+    public InitializeTask(Profile context)
     {
         m_context = context;
     }
@@ -31,9 +31,5 @@ public class InitializeTask extends AsyncTask<
     }
     // onPostExecute displays the results of the AsyncTask.doInBackground().
     // this method is invoked by the GUI thread
-    @Override
-    protected void onPostExecute(final ArrayList<BEUser> stations) {
-        m_context.initializeData(stations);
 
-    }
 }

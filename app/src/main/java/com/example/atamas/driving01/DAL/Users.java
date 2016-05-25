@@ -55,7 +55,7 @@ public class Users {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject d = array.getJSONObject(i);
 
-                BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("course"));
+                BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("course"), d.getString("firstName"), d.getString("lastName"), d.getString("email"), d.getString("telNum"));
 
              //   BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("firstName"), d.getString("lastName"), d.getString("email"));
                 m_users.add(s);

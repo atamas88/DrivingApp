@@ -10,6 +10,9 @@ public class BECourse {
     private int m_capacity;
     private int m_occupied;
     private String m_id;
+    private String m_startDate;
+    private String m_endDate;
+    private String m_date;
 
     public BECourse(String id, String description, int week)
     {
@@ -17,6 +20,25 @@ public class BECourse {
         setDescription(description);
        // setUser(user);
         setWeek(week);
+    }
+
+    public BECourse(String id, String description, int week, String startDate, String endDate) {
+        setId(id);
+        setDescription(description);
+        setWeek(week);
+        setStartDate(startDate);
+        setEndDate(endDate);
+        // setUser(user);
+
+    }
+    public BECourse(String id, String description, int week, String date) {
+        setId(id);
+        setDescription(description);
+        setWeek(week);
+        setDate(date);
+
+        // setUser(user);
+
     }
 
     public void setId(String id) {
@@ -45,5 +67,18 @@ public class BECourse {
         this.m_week = week;
     }
 
+    public String getStartDate(){return m_startDate;}
+    public void setStartDate(String startDate) {
+        this.m_startDate = startDate;
+    }
 
+    public String getEndDate(){return m_endDate;}
+    public void setEndDate(String endDate) {
+        this.m_endDate = endDate;
+    }
+
+    public String getDate(){return m_date;}
+    public void setDate(String date) {
+        this.m_date = date;
+    }
 }

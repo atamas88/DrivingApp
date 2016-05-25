@@ -20,7 +20,15 @@ public class Profile extends AppCompatActivity {
     ArrayList<BEUser> users = new ArrayList<>();
     ArrayList<BECourse> courses = new ArrayList<>();
     String user;
-    TextView course;
+    TextView courseid;
+    TextView coursename;
+    TextView firstName;
+    TextView lastName;
+    TextView email;
+    TextView telNum;
+    BECourse course;
+    TextView endDate;
+    TextView startDate;
 
 
     @Override
@@ -67,8 +75,15 @@ public class Profile extends AppCompatActivity {
     {
 
         username = (TextView)findViewById(R.id.txtUserName);
-        course = (TextView)findViewById(R.id.txtCourseId);
+        courseid = (TextView)findViewById(R.id.txtCourseId);
+        coursename = (TextView)findViewById(R.id.txtCourseName);
+        endDate = (TextView)findViewById(R.id.lblEndDate);
+        startDate = (TextView)findViewById(R.id.lblStartDate);
 
+        firstName = (TextView)findViewById(R.id.lblFirstName);
+        lastName = (TextView)findViewById(R.id.lblLastName);
+        email = (TextView)findViewById(R.id.lblEmail);
+        telNum = (TextView)findViewById(R.id.lblTel);
         Bundle extras = getIntent().getExtras();
         user = extras.getString("user");
 
@@ -80,10 +95,32 @@ public class Profile extends AppCompatActivity {
         Log.d("LO!!!!!!!!!!!!!!!!", "LOADEDEDEDD!!!!!!!!!");
         BEUser foundUser = findByName(user);
 
-        Log.d("USER",foundUser.getName());
+        Log.d("USER", foundUser.getName());
 
         username.setText(foundUser.getName());
-        course.setText(foundUser.getCourse().toString());
+        courseid.setText(foundUser.getCourse().toString());
+        course = findCourseById(foundUser.getCourse());
+        coursename.setText(course.getDescription());
+       // endDate.setText(course.getEndDate());
+        //startDate.setText(course.getStartDate());
+
+        String[] date = course.getDate().split(",");
+
+        String start = date[0].split(":")[1];
+
+        String end = date[1].split(":")[1];
+
+        start = start.substring(1, 11);
+
+        end = end.substring(1, 11);
+
+        startDate.setText(start);
+        endDate.setText(end);
+
+        firstName.setText(foundUser.getFirstName());
+        lastName.setText(foundUser.getLastName());
+        email.setText(foundUser.getEmail());
+        telNum.setText(foundUser.getTelNum());
 
 
     }
@@ -94,11 +131,11 @@ public class Profile extends AppCompatActivity {
         {
             users.add(pd.get(i));
         }
-/*
+
         InitializeCourses c = new InitializeCourses(this);
         c.execute(new Courses());
-*/
-        _continue();
+
+
     }
 
     public void initializeCourseData(final ArrayList<BECourse> co)
@@ -109,6 +146,22 @@ public class Profile extends AppCompatActivity {
             courses.add(co.get(i));
         }
 
+        _continue();
+    }
+
+
+    public BECourse findCourseById(String id)
+    {
+        BECourse course = new BECourse("00", "course not found", 0);
+
+        for(int i = 0; i < courses.size(); ++i)
+        {
+            if(Objects.equals(courses.get(i).getId(), id))
+            {
+                course = courses.get(i);
+            }
+        }
+        return course;
     }
 
 

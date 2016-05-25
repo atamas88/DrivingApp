@@ -54,7 +54,7 @@ public class Courses {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject d = array.getJSONObject(i);
 
-                BECourse s = new BECourse(d.getString("_id"), d.getString("description"),d.getInt("week"));
+                BECourse s = new BECourse(d.getString("_id"), d.getString("description"),d.getInt("week"), d.getString("date"));
 
                 //   BEUser s = new BEUser(d.getString("_id"), d.getString("name"), d.getString("firstName"), d.getString("lastName"), d.getString("email"));
                 m_courses.add(s);

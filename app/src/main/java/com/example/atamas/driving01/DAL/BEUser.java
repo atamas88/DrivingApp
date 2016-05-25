@@ -14,13 +14,16 @@ public class BEUser {
     private String m_course;
     //private Address m_address;
 
-    public BEUser(String id, String name, String firstName, String lastName, String email)
+    public BEUser(String id, String name, String course, String firstName, String lastName, String email, String telNum)
     {
         setId(id);
         setName(name);
+        setCourse(course);
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setTelNum(telNum);
+
 
     }
 
@@ -38,11 +41,11 @@ public class BEUser {
     public String getId() { return m_id; }
 
     public void setName(String m_name) {
-        this.m_firstName = m_name;
+        this.m_name = m_name;
     }
 
     public String getName() {
-        return m_firstName;
+        return m_name;
     }
 
     public String  getCourse(){ return m_course;}
@@ -76,5 +79,10 @@ public class BEUser {
         return m_email;
     }
 
-
+    public String getTelNum() {
+        return m_telNum;
+    }
+    public void setTelNum(String m_telNum) {
+        this.m_telNum = m_telNum;
+    }
 }

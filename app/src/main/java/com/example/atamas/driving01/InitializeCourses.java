@@ -2,28 +2,30 @@ package com.example.atamas.driving01;
 
 import android.os.AsyncTask;
 
+import com.example.atamas.driving01.DAL.BECourse;
 import com.example.atamas.driving01.DAL.BEUser;
+import com.example.atamas.driving01.DAL.Courses;
 import com.example.atamas.driving01.DAL.Users;
 
 import java.util.ArrayList;
 
 /**
- * Created by a.tamas on 23/05/2016.
+ * Created by a.tamas on 25/05/2016.
  */
-public class InitializeTask extends AsyncTask<
-        Users, // collection of PoliceDistricts to execute
+public class InitializeCourses  extends AsyncTask<
+        Courses, // collection of PoliceDistricts to execute
         Void, // to type of progress info
-        ArrayList<BEUser>>
+        ArrayList<BECourse>>
 
 {
     Profile m_context;
 
-    public InitializeTask(Profile context)
+    public InitializeCourses(Profile context)
     {
         m_context = context;
     }
     @Override
-    protected ArrayList<BEUser> doInBackground(Users... ms) {
+    protected ArrayList<BECourse> doInBackground(Courses... ms) {
         // params comes from the execute()
 
         ms[0].loadAll();
@@ -33,8 +35,10 @@ public class InitializeTask extends AsyncTask<
     // this method is invoked by the GUI thread\
 
     @Override
-    protected void onPostExecute(final ArrayList<BEUser> users)
+    protected void onPostExecute(final ArrayList<BECourse> courses)
     {
-        m_context.initializeData(users);
+        m_context.initializeCourseData(courses);
     }
+
+
 }

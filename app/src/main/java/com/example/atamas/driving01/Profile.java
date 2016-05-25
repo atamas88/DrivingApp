@@ -29,7 +29,9 @@ public class Profile extends AppCompatActivity {
     ArrayList<BEUser> users = new ArrayList<>();
     ArrayList<BECourse> courses = new ArrayList<>();
     String user;
-    TextView course;
+    TextView courseid;
+    TextView coursename;
+    BECourse course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,8 @@ public class Profile extends AppCompatActivity {
     {
 
         username = (TextView)findViewById(R.id.txtUserName);
-        course = (TextView)findViewById(R.id.txtCourseId);
-
+        courseid = (TextView)findViewById(R.id.txtCourseId);
+        coursename = (TextView)findViewById(R.id.txtCourseName);
         Bundle extras = getIntent().getExtras();
         user = extras.getString("user");
 
@@ -91,7 +93,9 @@ public class Profile extends AppCompatActivity {
         Log.d("USER",foundUser.getName());
 
         username.setText(foundUser.getName());
-        course.setText(foundUser.getCourse().toString());
+        courseid.setText(foundUser.getCourse().toString());
+        course = findCourseById(foundUser.getCourse());
+        coursename.setText(course.getDescription());
 
 
     }
@@ -102,11 +106,11 @@ public class Profile extends AppCompatActivity {
         {
             users.add(pd.get(i));
         }
-/*
+
         InitializeCourses c = new InitializeCourses(this);
         c.execute(new Courses());
-*/
-        _continue();
+
+
     }
 
     public void initializeCourseData(final ArrayList<BECourse> co)
@@ -117,6 +121,22 @@ public class Profile extends AppCompatActivity {
             courses.add(co.get(i));
         }
 
+        _continue();
+    }
+
+
+    public BECourse findCourseById(String id)
+    {
+        BECourse course = new BECourse("00", "course not found", 0);
+
+        for(int i = 0; i < courses.size(); ++i)
+        {
+            if(Objects.equals(courses.get(i).getId(), id))
+            {
+                course = courses.get(i);
+            }
+        }
+        return course;
     }
 
 

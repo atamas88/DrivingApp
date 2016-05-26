@@ -1,9 +1,11 @@
 package com.example.atamas.driving01.DAL;
 
+import java.io.Serializable;
+
 /**
  * Created by a.tamas on 23/05/2016.
  */
-public class BEUser {
+public class BEUser implements Serializable{
 
     private String m_id;
     private String m_firstName;

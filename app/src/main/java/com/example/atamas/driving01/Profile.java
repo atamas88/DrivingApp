@@ -1,9 +1,17 @@
 package com.example.atamas.driving01;
 
-import android.os.Bundle;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.atamas.driving01.DAL.BECourse;
 import com.example.atamas.driving01.DAL.BEUser;
@@ -11,6 +19,9 @@ import com.example.atamas.driving01.DAL.Courses;
 import com.example.atamas.driving01.DAL.Users;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Profile extends AppCompatActivity {
@@ -29,7 +40,7 @@ public class Profile extends AppCompatActivity {
     BECourse course;
     TextView endDate;
     TextView startDate;
-
+    Button btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +104,7 @@ public class Profile extends AppCompatActivity {
         // load();
 
         Log.d("LO!!!!!!!!!!!!!!!!", "LOADEDEDEDD!!!!!!!!!");
-        BEUser foundUser = findByName(user);
+        final BEUser foundUser = findByName(user);
 
         Log.d("USER", foundUser.getName());
 
@@ -122,6 +133,13 @@ public class Profile extends AppCompatActivity {
         email.setText(foundUser.getEmail());
         telNum.setText(foundUser.getTelNum());
 
+        btnEdit = (Button)findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Profile.this.onClickEdit(foundUser);
+            }
+        });
 
     }
 
@@ -162,6 +180,21 @@ public class Profile extends AppCompatActivity {
             }
         }
         return course;
+    }
+
+    private void onClickEdit(BEUser foundUser) {
+
+
+
+        Intent intent = new Intent(Profile.this,EditProfile.class);
+
+        intent.putExtra("user", foundUser);
+
+
+        startActivity(intent);
+
+
+
     }
 
 

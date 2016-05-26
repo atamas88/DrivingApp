@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -120,5 +121,52 @@ public class Users {
         }
         return null;
 
+    }
+
+    public void update(BEUser user)
+    {
+        InputStream inputStream = null;
+        String result = "";
+
+        try {
+            // 1. create HttpClient
+            HttpClient httpclient = new DefaultHttpClient();
+            // 2. make POST request to the given URL
+            HttpPut httpPUT = new
+                    HttpPut("http://xxx.xx.x.xxx:xxxx/xxxxxxxy/webresources/net.xxxxxx.users/3");
+            String json = "";
+            // 3. build jsonObject
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("idUser","3");
+            jsonObject.put("name","Mark");
+            jsonObject.put("pass","1234");
+            jsonObject.put("rol","554");
+            jsonObject.put("usuario","mark");
+
+
+
+
+            // 4. convert JSONObject to JSON to String
+            json = jsonObject.toString();
+
+            // 5. set json to StringEntity
+            StringEntity se = new StringEntity(json);
+            // 6. set httpPost Entity
+            httpPUT.setEntity(se);
+            // 7. Set some headers to inform server about the type of the content
+            httpPUT.setHeader("Accept", "application/json");
+            httpPUT.setHeader("Content-type", "application/json");
+            // 8. Execute POST request to the given URL
+            HttpResponse httpResponse = httpclient.execute(httpPUT);
+            // 9. receive response as inputStream
+            //                  inputStream = httpResponse.getEntity().getContent();
+            //                  // 10. convert inputstream to string
+            //                  if(inputStream != null)
+            //                      result = convertInputStreamToString(inputStream);
+            //                  else
+            //                      result = "Did not work!";
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
     }
 }

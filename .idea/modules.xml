@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DrivingSchoolGit.iml" filepath="$PROJECT_DIR$/DrivingSchoolGit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
-=======
-    <modules />
->>>>>>> origin/master
-=======
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Driving0.1.iml" filepath="$PROJECT_DIR$/Driving0.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-    </modules>
->>>>>>> origin/master
   </component>
 </project>
